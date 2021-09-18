@@ -1,0 +1,38 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item"><a routerLink="/status">Status</a></li>
+    <li class="breadcrumb-item active">Formulário Status</li>
+  </ol>
+  
+  <div class="row mb-4">
+    <div class="col-md">
+      <h1 class="h2 border-left pl-2">Formulário de Status</h1>
+    </div>
+    <div class="col-md">
+      <a routerLink="/status" class="btn btn-light float-right"><< Voltar</a>
+    </div>
+  </div>
+
+  <form ngForm>
+
+    <div class="card">
+      <div class="card-header">Dados do status</div>
+    
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" [(ngModel)]="status.nome" name="nome"/>
+          </div>
+          <div class="form-group col-md-8">
+              <label for="desc">Descrição</label>
+              <input type="text" class="form-control" id="descricao" [(ngModel)]="status.descricao" name="descricao"/>
+            </div>
+
+        </div>
+      </div>
+  </div>
+  <button class="btn btn-primary btn-lg float-right mt-4" (click)="salvarStatus()">Salvar</button>
+
+
+  </form>

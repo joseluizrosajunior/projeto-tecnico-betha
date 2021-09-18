@@ -1,0 +1,55 @@
+<ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item"><a routerLink="/pessoas">Pessoas</a></li>
+        <li class="breadcrumb-item active">Formulário Pessoas</li>
+      </ol>
+      
+      <div class="row mb-4">
+        <div class="col-md">
+          <h1 class="h2 border-left pl-2">Formulário de Pessoas</h1>
+        </div>
+        <div class="col-md">
+          <a routerLink="/pessoas" class="btn btn-light float-right"><< Voltar</a>
+        </div>
+      </div>
+    
+      <form ngForm>
+    
+        <div class="card">
+          <div class="card-header">Dados da pessoa</div>
+        
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" [(ngModel)]="pessoa.nome" name="nome"/>
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="cpf">CPF</label>
+                  <input type="text" class="form-control" id="cpf" [(ngModel)]="pessoa.cpf" name="cpf"/>
+                </div>
+                <div class="form-group col-md-4">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" class="form-control" id="telefone" [(ngModel)]="pessoa.telefone" name="telefone"/>
+                      </div>
+    
+            </div>
+    
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="email">E-mail</label>
+                  <input type="email" class="form-control" id="email" [(ngModel)]="pessoa.email" name="email"/>
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="end">Endereço</label>
+                    <input type="text" class="form-control" id="end" [(ngModel)]="pessoa.endereco" name="end"/>
+                  </div>
+      
+              </div>
+          </div>
+      </div>
+      <button class="btn btn-primary btn-lg float-right mt-4" (click)="salvarPessoa()">Salvar</button>
+    
+    
+      </form>
+    

@@ -1,0 +1,35 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item active">Usuários</li>
+  </ol>
+  
+  <div class="row mb-4">
+    <div class="col-md">
+      <h1 class="h2 border-left pl-2">Usuários</h1>
+    </div>
+    <div class="col-md">
+      <a routerLink="new" class="btn btn-light float-right">+ Add Usuário</a>
+    </div>
+  </div>
+  
+  <table class="table table-hover">
+    <thead>
+      <tr class="bg-secondary text-light">
+        <th>Usuário</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarioList">
+        <td>
+          <strong>{{usuario.nome}}</strong><br>
+          <small>{{usuario.email}} - {{usuario.funcao}}</small>
+        </td>
+        <td>
+          <a [routerLink]="[usuario.id,'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+          <button (click)="deleteUsuario(usuario.id)" class="btn btn-outline-danger btn-sm">Apagar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

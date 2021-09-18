@@ -1,0 +1,140 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+  <li class="breadcrumb-item"><a routerLink="/chamados">Chamados</a></li>
+  <li class="breadcrumb-item active">Formulário Chamado</li>
+</ol>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">Formulário de Chamado</h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="/chamados" class="btn btn-light float-right"><< Voltar</a>
+  </div>
+</div>
+
+<form ngForm>
+
+  <div class="card">
+    <div class="card-header">Dados do cliente</div>
+
+    <div class="card-body">
+      <div class="form-row">
+
+        <div class="form-group col-md-4">
+          <label for="cpf">CPF</label>
+          <input type="text" class="form-control" id="cpf" [(ngModel)]="chamado.cliente.cpf" name="cpf" (blur)="carregarPessoaBanco()"/>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" [(ngModel)]="chamado.cliente.nome" name="nome" />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="telefone">Telefone</label>
+          <input type="text" class="form-control" id="telefone" [(ngModel)]="chamado.cliente.telefone" name="telefone" />
+        </div>
+
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="chamado.cliente.email" name="email" />
+        </div>
+        <div class="form-group col-md-8">
+          <label for="end">Endereço</label>
+          <input type="text" class="form-control" id="end" [(ngModel)]="chamado.cliente.endereco" name="end" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="card mt-4">
+    <div class="card-header">Dados do equipamento</div>
+
+    <div class="card-body">
+      <div class="form-row">
+          <div class="form-group col-md-4">
+              <label for="sn">Numero de série</label>
+              <input type="text" class="form-control" id="sn" [(ngModel)]="chamado.equipamento.numeroSerie" name="sn" (blur)="carregarEquipamentoBanco()"/>
+            </div>
+        <div class="form-group col-md-8">
+          <label for="modelo">Modelo</label>
+          <input type="text" class="form-control" id="modelo" [(ngModel)]="chamado.equipamento.modelo" name="modelo" />
+        </div>
+        
+
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="tipo">Tipo</label>
+          <input type="text" class="form-control" id="tipo" [(ngModel)]="chamado.equipamento.tipo" name="tipo" />
+        </div>
+        <div class="form-group col-md-8">
+            <label for="descricao">Descrição</label>
+            <input type="text" class="form-control" id="descricao" [(ngModel)]="chamado.equipamento.descricao" name="descricao" />
+          </div>
+
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-header">Dados adicionais do chamado</div>
+  
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="defeito">Defeito relatado</label>
+          <textarea name="defeito" class="form-control" id="defeito" rows="4" [(ngModel)]="chamado.defeito"></textarea>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <button class="btn btn-primary btn-lg float-right mt-4" (click)="salvarChamadoBanco()"*ngIf="statusIdFinalizado != chamado.status.id">Salvar</button>
+  </div>
+
+  <div id="accordion" *ngIf="!novo">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            aria-controls="collapseOne">
+            Histórico do chamado
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead>
+              <tr class="bg-secondary text-light">
+                <th>Status</th>
+                <th>Definido por</th>
+                <th>Obs</th>
+                <th>Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let historico of historicoList">
+                <td>{{historico.status.nome}}</td>
+                <td>{{historico.usuario.nome}}</td>
+                <td>{{historico.obs}}</td>
+                <td>{{historico.data | date: 'dd/MM/yy HH:mm'}}</td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+</form>
